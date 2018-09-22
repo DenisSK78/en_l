@@ -1,0 +1,62 @@
+CREATE SCHEMA if NOT EXISTS my_classes_en CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE my_classes_en;
+
+CREATE TABLE IF NOT EXISTS user(
+  id BIGINT AUTO_INCREMENT,
+  first_name VARCHAR(100),
+  surname VARCHAR(100),
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL,
+  status VARCHAR(30) NOT NULL,
+  role VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS statistic(
+  id BIGINT AUTO_INCREMENT,
+  learned INTEGER(3),
+  reread INTEGER(3),
+  need_repeat INTEGER(3),
+  user_id BIGINT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS learned(
+  id BIGINT AUTO_INCREMENT,
+  name VARCHAR(255),
+  number INTEGER(3) NOT NULL,
+  learn INTEGER NOT NULL DEFAULT 0,
+  user_id BIGINT NOT NULL,
+  reread INTEGER NOT NULL DEFAULT 0,
+  need_repeat INTEGER(1),
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS worlds(
+  id BIGINT AUTO_INCREMENT,
+  ru_world VARCHAR(255),
+  en_world VARCHAR(255),
+  ru_phrase VARCHAR(255),
+  en_phrase VARCHAR(255),
+  user_id BIGINT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS read_ok(
+  id BIGINT AUTO_INCREMENT,
+  name VARCHAR(255),
+  number INTEGER(3) NOT NULL,
+  user_id BIGINT NOT NULL,
+  reread INTEGER NOT NULL DEFAULT 0,
+  need_repead INTEGER(1),
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('admin', 'admin', 'admin@admin.ru', 'admin', 'OK', 'ADMIN');
+INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('user', 'user', 'user@user.ru', 'user', 'OK', 'USER');
+
