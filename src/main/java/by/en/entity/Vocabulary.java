@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @ToString
 
 @Entity
-@Table(name = "worlds")
-public class Worlds extends BaseEntity {
+@Table(name = "vocabulary")
+public class Vocabulary extends BaseEntity {
 
     @Column(name = "ru_world")
     private String ruWorld;

@@ -1,6 +1,6 @@
 package by.en.controller.units;
 
-import by.en.entity.Worlds;
+import by.en.entity.Vocabulary;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -20,18 +20,29 @@ public class DemoController {
             , @RequestHeader("CustomHeader")  String customHeader
     ){
 
-        Worlds worlds = new Worlds();
-        worlds.setEnWorld("Soon");
-        worlds.setRuWorld("скоро");
-        worlds.setEnPhrase("I getting up very soon.");
-        worlds.setRuPhrase("Я очень скоро встаю.");
+        Vocabulary vocabulary = new Vocabulary();
+        vocabulary.setEnWorld("Soon");
+        vocabulary.setRuWorld("скоро");
+        vocabulary.setEnPhrase("I getting up very soon.");
+        vocabulary.setRuPhrase("Я очень скоро встаю.");
 
         System.out.println(id);
         System.out.println(parameter);
         System.out.println(cookie);
         System.out.println(customHeader);
 
-        model.addAttribute("world", worlds);
+        model.addAttribute("world", vocabulary);
+        return "demo";
+    }
+
+    @GetMapping("/demo")
+    public String getDemo(Model model){
+        Vocabulary vocabulary = new Vocabulary();
+        vocabulary.setEnWorld("Soon");
+        vocabulary.setRuWorld("скоро");
+        vocabulary.setEnPhrase("I getting up very soon.");
+        vocabulary.setRuPhrase("Я очень скоро встаю.");
+        model.addAttribute("world", vocabulary);
         return "demo";
     }
 }

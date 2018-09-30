@@ -6,7 +6,7 @@
 </head>
 <body>
 <%--${sessionParam}--%>
-${worlds}
+${vocabulary}
 <br>
 ${sessionParam}
 </body>

@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS learned(
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS worlds(
+CREATE TABLE IF NOT EXISTS vocabulary(
   id BIGINT AUTO_INCREMENT,
   ru_world VARCHAR(255),
   en_world VARCHAR(255),

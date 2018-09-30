@@ -1,6 +1,6 @@
 package by.en.controller.units;
 
-import by.en.entity.Worlds;
+import by.en.entity.Vocabulary;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ public class ModelInteractionController {
 
 //    @ModelAttribute
 //    public void prepopulateWorlds(Model model) {
-//        Worlds worlds = new Worlds();
+//        Vocabulary worlds = new Vocabulary();
 //        worlds.setEnWorld("Soon");
 //        worlds.setRuWorld("скоро");
 //        worlds.setEnPhrase("I getting up very soon.");
@@ -23,13 +23,13 @@ public class ModelInteractionController {
 //    }
 
     @ModelAttribute("worlds")
-    public Worlds prepopulateUser() {
-        Worlds worlds = new Worlds();
-        worlds.setEnWorld("Soon");
-        worlds.setRuWorld("скоро");
-        worlds.setEnPhrase("I getting up very soon.");
-        worlds.setRuPhrase("Я очень скоро встаю.");
-        return worlds;
+    public Vocabulary prepopulateUser() {
+        Vocabulary vocabulary = new Vocabulary();
+        vocabulary.setEnWorld("Soon");
+        vocabulary.setRuWorld("скоро");
+        vocabulary.setEnPhrase("I getting up very soon.");
+        vocabulary.setRuPhrase("Я очень скоро встаю.");
+        return vocabulary;
     }
 
     @GetMapping("/model")

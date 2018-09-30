@@ -57,9 +57,9 @@ public class DataBaseConfig {
     @Bean
     public LocalSessionFactoryBean sessionFactory(){
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-        sessionFactoryBean.setDataSource(dataSource());//this will not method this will @Bean after up context
+        sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("by.en.entity");
-        sessionFactoryBean.setHibernateProperties(hibernateProperties());//this will not method this will @Bean after up context
+        sessionFactoryBean.setHibernateProperties(hibernateProperties());
         return sessionFactoryBean;
     }
 

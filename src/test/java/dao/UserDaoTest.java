@@ -13,8 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"classpath:application-context.xml"})
+
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {DataBaseConfig.class})
 public class UserDaoTest {
@@ -22,7 +21,7 @@ public class UserDaoTest {
     @Autowired
     private UserDAO userDAO;
 
-    Logger logger = Logger.getLogger(UserDaoTest.class);
+    private Logger logger = Logger.getLogger(UserDaoTest.class);
 
     @Test
     public void testSmth(){
