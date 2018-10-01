@@ -13,6 +13,6 @@ public class App {
             e.printStackTrace();
         }
         assert lessons != null;
-        lessons.forEach((integer, s) -> System.out.println(integer + " " + s));
+        lessons.forEach((integer, s) -> System.out.println(integer + ":" + s));
     }
 }

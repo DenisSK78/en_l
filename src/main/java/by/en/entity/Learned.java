@@ -31,7 +31,7 @@ public class Learned extends BaseEntity{
     @Column(name = "learn")
     private Integer learn;
 
-    @Column(name = "reread")
+    @Column(name = "repeated")
     private Integer reread;
 
     @Column(name = "need_repeat")

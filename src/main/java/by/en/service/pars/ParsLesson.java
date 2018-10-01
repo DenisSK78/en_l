@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class ParsLesson {
 
-    private Integer count=0;
+    private Integer count = 0;
 
     public Map<Integer, String>  getMurphyLesson() throws FileNotFoundException {
 

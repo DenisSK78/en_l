@@ -25,7 +25,7 @@ public class Statistic extends BaseEntity{
     @Column(name = "learned")
     private Integer learned;
 
-    @Column(name = "reread")
+    @Column(name = "repeated")
     private Integer reread;
 
     @Column(name = "need_repeat")

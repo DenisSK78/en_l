@@ -24,12 +24,10 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
     public List<E> findAll() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         List<E> eList = session.createQuery("select e from "
                 + entityClass.getSimpleName()
                 + " e", entityClass)
                 .getResultList();
-
         session.getTransaction().commit();
         session.close();
         return eList;
@@ -38,12 +36,9 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
     @Override
     public E getById(Long id) {
         E entity;
-
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         entity = session.find(entityClass, id);
-
         session.getTransaction().commit();
         session.close();
         return entity;
@@ -53,9 +48,7 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
     public void save(E entity) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         session.save(entity);
-
         session.getTransaction().commit();
         session.close();
     }
@@ -64,9 +57,7 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
     public void delete(E entity) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         session.delete(entity);
-
         session.getTransaction().commit();
         session.close();
     }
@@ -75,12 +66,9 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
     public void update(E entity) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
         session.update(entity);
-
         session.getTransaction().commit( );
         session.close();
-
     }
 
     protected SessionFactory getSessionFactory() {
