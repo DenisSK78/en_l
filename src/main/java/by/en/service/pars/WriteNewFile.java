@@ -24,9 +24,7 @@ public class WriteNewFile {
         File file = new File(PATH, NEW_MURPHY_TXT);
 
         try (FileWriter fw = new FileWriter(file)){
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+
             assert lessons != null;
             lessons.forEach((k, v)-> {
                 try {
