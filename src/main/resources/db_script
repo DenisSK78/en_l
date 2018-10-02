@@ -1,4 +1,5 @@
-CREATE SCHEMA if NOT EXISTS my_classes_en CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE SCHEMA if NOT EXISTS my_classes_en CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
 
 USE my_classes_en;
 
@@ -56,12 +57,6 @@ CREATE TABLE IF NOT EXISTS read_ok(
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
-
-CREATE TABLE IF NOT EXISTS murphy_unit(
-  id BIGINT AUTO_INCREMENT,
-  number VARCHAR(3) UNIQUE NOT NULL,
-  name VARCHAR(255),
-  PRIMARY KEY (id));
 
 INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('admin', 'admin', 'admin@admin.ru', 'admin', 'OK', 'ADMIN');
 INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('user', 'user', 'user@user.ru', 'user', 'OK', 'USER');
