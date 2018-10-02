@@ -12,11 +12,15 @@ import java.util.stream.Collectors;
 
 public class ParsLesson {
 
+    private String src = "src";
+    private String main = "main";
+    private String resources = "resources";
+    private File path = new File(src + File.separator + main + File.separator + resources);
     private Integer count = 0;
 
     public Map<Integer, String>  getMurphyLesson() throws FileNotFoundException {
 
-        File file = new File("murphy.txt");
+        File file = new File(path,"murphy.txt");
 
         Scanner scanner = new Scanner(new BufferedInputStream(new FileInputStream(file)));
         scanner.useDelimiter("\"Unit");
@@ -32,7 +36,8 @@ public class ParsLesson {
         return units
                 .stream()
                 .map(s->s.split("\"}")[0].trim())
-                .map(s->s.replace(".", " "))
+                .map(s->s.replace(".", ""))
+                .map(s->s.replace("\uD83D\uDCD8", ""))
                 .map(s -> s.replace("  ", " "))
                 .filter(this::deleteTheSame)
                 .collect(Collectors.toMap(c->Integer.valueOf(c.split("\\s")[0].trim()), c->c.replaceFirst("(\\d*? )", " ").trim()));
