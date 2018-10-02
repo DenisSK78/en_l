@@ -1,6 +1,7 @@
 package by.en.service.pars;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 
 import static by.en.service.pars.RootPath.NEW_MURPHY_TXT;
 
+@Service
 public class MurphyLessonList {
 
     private static final Logger logger = Logger.getLogger(MurphyLessonList.class);
