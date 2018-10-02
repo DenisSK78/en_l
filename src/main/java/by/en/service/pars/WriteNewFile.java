@@ -6,11 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
+import static by.en.service.pars.RootPath.NEW_MURPHY_TXT;
+import static by.en.service.pars.RootPath.PATH;
+
 public class WriteNewFile {
-    private String src = "src";
-    private String main = "main";
-    private String resources = "resources";
-    private File path = new File(src + File.separator + main + File.separator + resources);
 
     public void write() {
 
@@ -21,16 +20,15 @@ public class WriteNewFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        assert lessons != null;
-        lessons.forEach((integer, s) -> System.out.println(integer + ":" + s));
 
-        File file = new File(path, "new-murphy.txt");
-        try {
-            FileWriter fw = new FileWriter(file);
+        File file = new File(PATH, NEW_MURPHY_TXT);
+
+        try (FileWriter fw = new FileWriter(file)){
             if (!file.exists()) {
-                System.out.println(file.createNewFile());
+                file.createNewFile();
             }
-            lessons.forEach((k,v)-> {
+            assert lessons != null;
+            lessons.forEach((k, v)-> {
                 try {
                     fw.write(k.toString() + ": " + v + "\n");
                 } catch (IOException e) {
