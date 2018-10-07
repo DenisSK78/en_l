@@ -34,14 +34,12 @@ public class ModelInteractionController {
 
     @GetMapping("/model")
     public String showModelPage(Model model) {
-        System.out.println("-------1--------");
         model.addAttribute("sessionParam", "Wild Session Param");
         return "model";
     }
 
     @GetMapping("/secondModel")
     public String showModelPage2(Model model) {
-        System.out.println("-------2--------");
         System.out.println(model.containsAttribute("sessionParam"));
         return "model";
     }

@@ -9,8 +9,6 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.List;
-
 @Configuration
 @ComponentScan(basePackages = {"by.en"})
 @PropertySource("classpath:database.properties")

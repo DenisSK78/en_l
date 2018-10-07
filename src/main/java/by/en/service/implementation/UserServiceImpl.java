@@ -1,8 +1,9 @@
-package by.en.service;
+package by.en.service.implementation;
 
 import by.en.dao.UserDAO;
 import by.en.entity.Role;
 import by.en.entity.User;
+import by.en.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,6 +37,5 @@ public class UserServiceImpl implements UserService {
 
     private Collection<? extends GrantedAuthority> generateAuthorities(Role role) {
         return Collections.singleton(new SimpleGrantedAuthority(role.toString()));
-        //if need more roles than one, set them
     }
 }

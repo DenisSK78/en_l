@@ -22,14 +22,8 @@ import javax.persistence.Table;
 @Table
 public class Learned extends BaseEntity{
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "number")
     private Integer number;
-
-    @Column(name = "learn")
-    private Integer learn;
 
     @Column(name = "repeated")
     private Integer reread;
