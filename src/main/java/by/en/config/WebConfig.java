@@ -1,6 +1,5 @@
 package by.en.config;
 
-import by.en.service.pars.MurphyLessonList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +23,8 @@ public class WebConfig {
         return viewResolver;
     }
 
-    @Bean
-    public MurphyLessonList MurphyUnits(){
-        return new MurphyLessonList();
-    }
+//    @Bean
+//    public MurphyLessonList MurphyUnits(){
+//        return new MurphyLessonList();
+//    }
 }

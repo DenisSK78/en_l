@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +21,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "read_ok")
-public class ReadOk extends BaseEntity {
+public class ReadOk extends BaseEntity  implements Serializable {
+
+    private static final long serialVersionUID = 952196873615785379L;
 
     @Column(name = "name")
     private String name;

@@ -1,4 +1,4 @@
-package by.en.dao.base;
+package by.en.dao;
 
 import by.en.entity.BaseEntity;
 

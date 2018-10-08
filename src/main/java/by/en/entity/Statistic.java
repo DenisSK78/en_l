@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +21,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "statistic")
-public class Statistic extends BaseEntity{
+public class Statistic extends BaseEntity  implements Serializable {
+
+    private static final long serialVersionUID = 1264949964397251990L;
 
     @Column(name = "learned")
     private Integer learned;
