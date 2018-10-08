@@ -1,4 +1,4 @@
-package by.en.controller.units;
+package by.en.controller.units.example;
 
 import by.en.entity.Vocabulary;
 import org.springframework.stereotype.Controller;
@@ -10,17 +10,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("sessionParam")
 public class ModelInteractionController {
-
-//    @ModelAttribute
-//    public void prepopulateWorlds(Model model) {
-//        Vocabulary worlds = new Vocabulary();
-//        worlds.setEnWorld("Soon");
-//        worlds.setRuWorld("скоро");
-//        worlds.setEnPhrase("I getting up very soon.");
-//        worlds.setRuPhrase("Я очень скоро встаю.");
-//
-//        model.addAttribute("worlds", worlds);
-//    }
 
     @ModelAttribute("worlds")
     public Vocabulary prepopulateUser() {

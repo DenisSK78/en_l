@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public class MurphyUnitDAOImpl extends BaseDAOImpl<MurphyUnit> implements MurphyUnitDAO {
 
-    @Transactional
     @Override
     public MurphyUnit getUnitByNumber(Integer number) {
         return getSession().createQuery("select u from MurphyUnit u where u.number=:number", MurphyUnit.class)

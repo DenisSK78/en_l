@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS statistic(
 CREATE TABLE IF NOT EXISTS murphy_unit(
   id BIGINT AUTO_INCREMENT,
   name VARCHAR(255),
-  number INTEGER(3) NOT NULL,
+  number INTEGER(3) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
@@ -69,4 +69,4 @@ CREATE TABLE IF NOT EXISTS read_ok(
 
 INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('admin', 'admin', 'admin@admin.ru', 'admin', 'OK', 'ADMIN');
 INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('user', 'user', 'user@user.ru', 'user', 'OK', 'USER');
-
+INSERT INTO `my_classes_en`.`user` (`first_name`, `surname`, `email`, `password`, `status`, `role`) VALUES ('user2', 'user2', 'user2@user2.ru', 'user2', 'OK', 'USER');

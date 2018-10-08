@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface LearnedDAO extends BaseDao<Learned> {
-    List<Learned> getLearnedByUser(User user);
+//    List<Learned> getLearnedByUser(User user);
 }

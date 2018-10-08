@@ -10,8 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -44,4 +47,10 @@ public class User extends BaseEntity  implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Learned> learnedSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Vocabulary> vocabularySet = new HashSet<>();
 }

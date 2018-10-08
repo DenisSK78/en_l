@@ -7,25 +7,18 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
 public class LearnedDAOImpl extends BaseDAOImpl<Learned> implements LearnedDAO {
 
-    @Transactional
-    @Override
-    public List<Learned> getLearnedByUser(User user) {
-
-        Query query = getSession().createQuery("select l from Learned l where l.user=:user");
-        query.setParameter("user", user).getResultList();
-        return (List<Learned>) query.list();
-    }
+//    @Override
+//    public List<Learned> getLearnedByUser(User user) {
+//        List learnedList = getSession().createQuery("select l from Learned l where l.user=:user")
+//            .setParameter("user", user).getResultList();
+//        return learnedList.size()==0 ? Collections.emptyList() : learnedList;
+//    }
 
 }
-
-
-
-//    String hql = "FROM User where name = :paramName";
-//    Query query = session.createQuery(hql);
-//    query.setParameter("paramName", "Alex");
-//    List<User> users = query.list();

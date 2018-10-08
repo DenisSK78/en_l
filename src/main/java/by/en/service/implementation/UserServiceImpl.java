@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -24,6 +25,28 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
+    @Override
+    @Transactional
+    public User getUserByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public void saveUser(User user) {
+        userDAO.save(user);
+    }
+
+    @Override
+    @Transactional
+    public User getUserById(Long userId) {
+        return userDAO.getById(userId);
+    }
+
+
+    /**
+    * This is method for security.
+    */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
        User user = userDAO.findByEmail(email);

@@ -1,4 +1,4 @@
-package by.en.service.pars;
+package by.en.service.util.parser;
 
 import java.io.File;
 

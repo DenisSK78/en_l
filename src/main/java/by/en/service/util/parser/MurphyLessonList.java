@@ -1,4 +1,4 @@
-package by.en.service.pars;
+package by.en.service.util.parser;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-import static by.en.service.pars.RootPath.NEW_MURPHY_TXT;
+import static by.en.service.util.parser.RootPath.NEW_MURPHY_TXT;
 
 @Service
 public class MurphyLessonList {

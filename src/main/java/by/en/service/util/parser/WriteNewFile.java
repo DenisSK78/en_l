@@ -1,4 +1,4 @@
-package by.en.service.pars;
+package by.en.service.util.parser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,8 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-import static by.en.service.pars.RootPath.NEW_MURPHY_TXT;
-import static by.en.service.pars.RootPath.PATH;
+import static by.en.service.util.parser.RootPath.NEW_MURPHY_TXT;
+import static by.en.service.util.parser.RootPath.PATH;
 
 public class WriteNewFile {
 

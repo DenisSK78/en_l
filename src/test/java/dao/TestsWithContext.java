@@ -1,13 +1,15 @@
 package dao;
 
 import by.en.config.DataBaseConfig;
-import by.en.dao.LearnedDAO;
-import by.en.dao.MurphyUnitDAO;
-import by.en.dao.UserDAO;
 import by.en.entity.Learned;
 import by.en.entity.MurphyUnit;
+import by.en.entity.Role;
+import by.en.entity.Status;
 import by.en.entity.User;
-import by.en.service.pars.MurphyLessonList;
+import by.en.service.LearnedService;
+import by.en.service.MurphyUnitService;
+import by.en.service.UserService;
+import by.en.service.util.parser.MurphyLessonList;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,65 +35,80 @@ public class TestsWithContext {
 //    MurphyLessonList murphyLessonList;
 
     @Autowired
-    LearnedDAO learnedDAO;
+    LearnedService learnedService;
 
     @Autowired
-    UserDAO userDAO;
+    UserService userService;
 
     @Autowired
-    MurphyUnitDAO murphyUnitDAO;
+    MurphyUnitService murphyUnitService;
 
     @Test
     public void existMurphyUnitsOrAddThem(){
 
-        List<MurphyUnit> murphyUnits = murphyUnitDAO.findAll();
+        List<MurphyUnit> murphyUnits = murphyUnitService.findAll();
 
         if (murphyUnits.size()==0){
             List<String> lessons = new MurphyLessonList().getMurphyLesson();
 
             Stream.iterate(0, x->x+1).limit(lessons.size())
                     .map(i -> new MurphyUnit(i+1, lessons.get(i).split(": ")[1]))
-                    .forEach(i -> murphyUnitDAO.save(i));
+                    .forEach(i -> murphyUnitService.saveUnit(i));
 
-            murphyUnits = murphyUnitDAO.findAll();
+            murphyUnits = murphyUnitService.findAll();
             Assert.assertEquals(murphyUnits.size(), 145);
         }
 
         Assert.assertEquals(murphyUnits.size(), 145);
     }
 
+    @Test
+    public void testGetUserByEmail(){
+        User user = userService.getUserByEmail("admin@admin.ru");
+        logger.info(user);
+        assertThat(userService, notNullValue());
+    }
 
     @Test
-    public void existLearnedByUserIfNotAddThem(){
+    public void existUserOrAddOneForTestNameUser2(){
 
-        int firstPart = 37;
+        User user = userService.getUserByEmail("user2@user2.by");
+
+        if(user == null) {
+            user = new User();
+            user.setEmail("user2@user2.by");
+            user.setFirstName("User2");
+            user.setSurname("User2");
+            user.setStatus(Status.OK);
+            user.setRole(Role.USER);
+            user.setPassword("user2");
+            userService.saveUser(user);
+            Assert.assertEquals(userService.getUserByEmail("user2@user2.by").getFirstName(), "User2");
+        }else {
+            Assert.assertEquals(user.getFirstName(), "User2");
+        }
+    }
+
+    @Test
+    public void existLearnedByUserIfNotAddThemForTestUser2(){
+
+        Integer firstPart = 37;
         Integer [] second = new Integer[]{82,83,84,85,86,87,88,89,90,91};
 
-        User user = userDAO.getById(2L);
-        List<Learned> learnedByUser = learnedDAO.getLearnedByUser(user);
+        User user = userService.getUserByEmail("user2@user2.by");
+        List<Learned> learnedByUser = learnedService.getLearnedByUser(user);
 
         if (learnedByUser.size()==0){
 
-            Integer [] learnedNumber = Stream.concat(
+            Stream.concat(
                     Arrays.stream(Stream.iterate(1, x->x+1).limit(firstPart).toArray(Integer[]::new)),
-                    Arrays.stream(second)).toArray(Integer[]::new);
+                    Arrays.stream(second))
+                    .map(e-> new Learned(0, 0, user, murphyUnitService.getUnitByNumber(e)))
+                    .forEach(learned -> learnedService.saveLearned(learned));
 
-            Arrays.stream(learnedNumber)
-                    .map(e-> new Learned(0, 0, user, murphyUnitDAO.getUnitByNumber(e)))
-                    .forEach(learned -> learnedDAO.save(learned));
-
-            Assert.assertTrue(learnedDAO.getLearnedByUser(user).size()!=0);
+            Assert.assertEquals(learnedService.getLearnedByUser(user).size(), firstPart+second.length);
         }else {
-            Assert.assertTrue(learnedDAO.getLearnedByUser(user).size()!=0);
+            Assert.assertEquals(learnedByUser.size(), firstPart+second.length);
         }
-
     }
-
-    @Test
-    public void testGetUserByEmail(){
-        User user = userDAO.findByEmail("admin@admin.ru");
-        logger.info(user);
-        assertThat(userDAO, notNullValue());
-    }
-
 }

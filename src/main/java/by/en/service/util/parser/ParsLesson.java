@@ -1,4 +1,4 @@
-package by.en.service.pars;
+package by.en.service.util.parser;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static by.en.service.pars.RootPath.MURPHY_TXT;
+import static by.en.service.util.parser.RootPath.MURPHY_TXT;
 
 public class ParsLesson {
 

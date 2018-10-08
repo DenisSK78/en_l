@@ -24,7 +24,7 @@ public class MurphyUnit extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 2620748789783766637L;
 
-    @Column(name="number")
+    @Column(name="number", unique = true)
     private Integer number;
 
     @Column(name = "name")

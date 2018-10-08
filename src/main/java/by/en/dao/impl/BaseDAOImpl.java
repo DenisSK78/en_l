@@ -24,7 +24,6 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
         this.entityClass = (Class<E>) GenericTypeResolver.resolveTypeArgument(getClass(), BaseDAOImpl.class);
     }
 
-    @Transactional
     @Override
     public List<E> findAll() {
         return getSession().createQuery("select e from "
@@ -33,29 +32,25 @@ public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
                 .getResultList();
     }
 
-    @Transactional
     @Override
     public E getById(Long id) {
         return getSession().find(entityClass, id);
     }
 
-    @Transactional
     @Override
     public void save(E entity) {
         getSession().save(entity);
     }
 
-    @Transactional
     @Override
     public void delete(E entity) {
         getSession().delete(entity);
     }
 
-    @Transactional
     @Override
     public void update(E entity) {
         getSession().update(entity);
     }
 
-    protected Session getSession(){return sessionFactory.getCurrentSession();}
+    Session getSession(){return sessionFactory.getCurrentSession();}
 }
