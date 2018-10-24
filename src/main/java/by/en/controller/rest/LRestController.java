@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 public class LRestController {
@@ -34,10 +34,9 @@ public class LRestController {
                 .map(e -> e.getMurphyUnit().getNumber())
                 .collect(Collectors.toList());
 
-        List<Learned> threeRandom = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            threeRandom.add(dbListLearned.get(new Random().nextInt(integers.size())));
-        }
-        return threeRandom;
+        return Stream
+                .iterate(1, n -> n+1).limit(3)
+                .map(e ->  dbListLearned.get(new Random().nextInt(integers.size())))
+                .collect(Collectors.toList());
     }
 }
