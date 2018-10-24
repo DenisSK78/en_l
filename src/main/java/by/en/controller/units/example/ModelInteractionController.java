@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("sessionParam")
 public class ModelInteractionController {
 
-    @ModelAttribute("worlds")
+    @ModelAttribute("words")
     public Vocabulary prepopulateUser() {
         Vocabulary vocabulary = new Vocabulary();
         vocabulary.setEnWorld("Soon");
@@ -29,7 +29,7 @@ public class ModelInteractionController {
 
     @GetMapping("/secondModel")
     public String showModelPage2(Model model) {
-        System.out.println(model.containsAttribute("sessionParam"));
+        System.out.println(model.containsAttribute("words"));
         return "model";
     }
 }

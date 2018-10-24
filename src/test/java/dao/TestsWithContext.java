@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.stream;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -92,7 +93,7 @@ public class TestsWithContext {
     @Test
     public void existLearnedByUserIfNotAddThemForTestUser2(){
 
-        Integer firstPart = 37;
+        Integer firstPart = 41;
         Integer [] second = new Integer[]{82,83,84,85,86,87,88,89,90,91};
 
         User user = userService.getUserByEmail("user2@user2.by");
@@ -101,14 +102,26 @@ public class TestsWithContext {
         if (learnedByUser.size()==0){
 
             Stream.concat(
-                    Arrays.stream(Stream.iterate(1, x->x+1).limit(firstPart).toArray(Integer[]::new)),
-                    Arrays.stream(second))
+                    stream(Stream.iterate(1, x -> x+1).limit(firstPart).toArray(Integer[]::new)),
+                    stream(second))
                     .map(e-> new Learned(0, 0, user, murphyUnitService.getUnitByNumber(e)))
                     .forEach(learned -> learnedService.saveLearned(learned));
 
             Assert.assertEquals(learnedService.getLearnedByUser(user).size(), firstPart+second.length);
         }else {
-            Assert.assertEquals(learnedByUser.size(), firstPart+second.length);
+            // for new if firstPart is growing
+            if (learnedService.getLearnedByUser(user).size() < firstPart+second.length) Stream
+                    .iterate(1, x -> x + 1)
+                    .limit(firstPart + second.length - learnedService.getLearnedByUser(user).size())
+                    .map(e -> e + firstPart)
+                    .forEach(e -> learnedService.saveLearned(
+                            new Learned(0, 0, user, murphyUnitService.getUnitByNumber(e))));
+            Assert.assertEquals(learnedService.getLearnedByUser(user).size(), firstPart+second.length);
         }
     }
+
+//    @Test
+//    public void addNewLessonIfLengthLearnedForUserLessThanInPreviousTest(){
+//
+//    }
 }

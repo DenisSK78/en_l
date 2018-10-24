@@ -1,13 +1,14 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<jsp:useBean id="vocabulary" scope="request" type="by.en.entity.Vocabulary"/>--%>
+<%@include file="/WEB-INF/jspf/header.jspf"%>
 <html>
 <head>
     <title>Model View Page</title>
 </head>
 <body>
-<%--${sessionParam}--%>
-${vocabulary}
+
+${words}
 <br>
 ${sessionParam}
 </body>
 </html>
+

@@ -1,18 +1,17 @@
 package by.en.dao.impl;
 
-import by.en.dao.BaseDao;
+import by.en.dao.BaseDAO;
 import by.en.entity.BaseEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDao<E> {
+public abstract class BaseDAOImpl<E extends BaseEntity> implements BaseDAO<E> {
 
     @Autowired
     private SessionFactory sessionFactory;

@@ -42,7 +42,8 @@ public class ParsLesson {
                     .map(s -> s.replace("\uD83D\uDCD8", ""))
                     .map(s -> s.replace("  ", " "))
                     .filter(this::deleteTheSame)
-                    .collect(Collectors.toMap(c -> Integer.valueOf(c.split("\\s")[0].trim()), c -> c.replaceFirst("(\\d*? )", " ").trim()));
+                    .collect(Collectors.toMap(c -> Integer.valueOf(c.split("\\s")[0].trim()),
+                            c -> c.replaceFirst("(\\d*? )", " ").trim()));
         }
 
         return Collections.emptyMap();

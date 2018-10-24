@@ -16,15 +16,13 @@ import java.util.List;
 public class LearnedServiceImpl implements LearnedService {
 
     private final LearnedDAO learnedDAO;
+    private final UserService userService;
 
     @Autowired
-    UserService userService;
-
-    @Autowired
-    public LearnedServiceImpl(LearnedDAO learnedDAO) {
+    public LearnedServiceImpl(LearnedDAO learnedDAO, UserService userService) {
         this.learnedDAO = learnedDAO;
+        this.userService = userService;
     }
-
 
     @Override
     @Transactional

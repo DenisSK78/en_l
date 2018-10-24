@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -43,11 +44,18 @@ public class UserServiceImpl implements UserService {
         return userDAO.getById(userId);
     }
 
+    @Override
+    @Transactional
+    public List<User> getAll() {
+        return userDAO.findAll();
+    }
+
 
     /**
     * This is method for security.
     */
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
        User user = userDAO.findByEmail(email);
        if (user == null){

@@ -4,7 +4,7 @@ import by.en.entity.BaseEntity;
 
 import java.util.List;
 
-public interface BaseDao <T extends BaseEntity>{
+public interface BaseDAO<T extends BaseEntity>{
     List<T> findAll();
     T getById(Long id);
     void save(T entity);

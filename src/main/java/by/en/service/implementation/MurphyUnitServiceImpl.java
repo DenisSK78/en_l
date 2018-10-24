@@ -19,7 +19,6 @@ public class MurphyUnitServiceImpl implements MurphyUnitService {
         this.murphyUnitDAO = murphyUnitDAO;
     }
 
-
     @Override
     @Transactional
     public List<MurphyUnit> findAll() {
