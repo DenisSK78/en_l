@@ -1,4 +1,4 @@
-package by.en.service.implementation;
+package by.en.service.impl;
 
 import by.en.dao.MurphyUnitDAO;
 import by.en.entity.MurphyUnit;

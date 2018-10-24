@@ -1,6 +1,6 @@
 package dao;
 
-import by.en.config.DataBaseConfig;
+import by.en.config.database.DataBaseConfig;
 import by.en.entity.Learned;
 import by.en.entity.MurphyUnit;
 import by.en.entity.Role;
@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 

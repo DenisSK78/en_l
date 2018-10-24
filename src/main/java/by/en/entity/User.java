@@ -1,5 +1,6 @@
 package by.en.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,9 +49,11 @@ public class User extends BaseEntity  implements Serializable {
     @Column(name = "role")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Learned> learnedSet = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Vocabulary> vocabularySet = new HashSet<>();
 }

@@ -1,5 +1,7 @@
 package by.en.config;
 
+import by.en.config.database.DataBaseConfig;
+import by.en.config.web.WebConfig;
 import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

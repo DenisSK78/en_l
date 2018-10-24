@@ -1,4 +1,4 @@
-package by.en.config;
+package by.en.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 //                .csrf().disable()//don't use get
                 .logout()
-                    .logoutUrl("demo")//post request
+                    .logoutUrl("demo")
                 .and()
                     .userDetailsService(userDetailsService);
 

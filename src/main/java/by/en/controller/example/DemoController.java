@@ -1,4 +1,4 @@
-package by.en.controller.units.example;
+package by.en.controller.example;
 
 import by.en.entity.Vocabulary;
 import org.springframework.stereotype.Controller;

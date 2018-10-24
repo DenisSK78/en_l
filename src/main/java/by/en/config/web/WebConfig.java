@@ -1,4 +1,4 @@
-package by.en.config;
+package by.en.config.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

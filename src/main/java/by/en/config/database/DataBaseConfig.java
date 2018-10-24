@@ -1,4 +1,4 @@
-package by.en.config;
+package by.en.config.database;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;

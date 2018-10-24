@@ -1,4 +1,4 @@
-package by.en.service.implementation;
+package by.en.service.impl;
 
 import by.en.dao.UserDAO;
 import by.en.entity.Role;
